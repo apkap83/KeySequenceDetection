@@ -6,10 +6,28 @@
     <script type="text/javascript" src="./cornify.js"></script>
     <link rel="icon" href="https://fav.farm/🔥" />
   </head>
-  <body style="min-height: 100vh; display: flex; align-items: center; justify-content: center; font-size: 30px">
-    <p>Press tolis many times...</p>
+  <body
+    style="
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+    "
+  >
+    <p>Press tolis</p>
 
-    <div class="indication" style="display: none; position: fixed; top: 0; left: 50%; font-size: 15px; transform: translateX(-100%)">
+    <div
+      class="indication"
+      style="
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 50%;
+        font-size: 15px;
+        transform: translateX(-100%);
+      "
+    >
       <label>Keypress: </label>
       <label class="keypressList"></label>
     </div>
@@ -24,7 +42,10 @@
 
       window.addEventListener("keyup", (e) => {
         pressed.push(e.key);
-        pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length);
+        pressed.splice(
+          -secretCode.length - 1,
+          pressed.length - secretCode.length
+        );
         console.log("indication", indication);
         indication.style.display = "block";
 
@@ -32,7 +53,9 @@
 
         if (pressed.join("").includes(secretCode)) {
           console.log("DING DING!");
-          cornify_add();
+          for (let i = 0; i <= 10; i++) {
+            cornify_add();
+          }
           paragraph.style.display = "none";
         }
       });
