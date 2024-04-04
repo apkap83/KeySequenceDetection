@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Key Detection</title>
+    <script type="text/javascript" src="./cornify.js"></script>
+    <link rel="icon" href="https://fav.farm/🔥" />
+  </head>
+  <body style="min-height: 100vh; display: flex; align-items: center; justify-content: center; font-size: 30px">
+    <p>Press tolis many times...</p>
+
+    <div class="indication" style="display: none; position: fixed; top: 0; left: 50%; font-size: 15px; transform: translateX(-100%)">
+      <label>Keypress: </label>
+      <label class="keypressList"></label>
+    </div>
+
+    <script>
+      const pressed = [];
+      const secretCode = "tolis";
+
+      const paragraph = document.querySelector("p");
+      const indication = document.querySelector(".indication");
+      const label = document.querySelector(".keypressList");
+
+      window.addEventListener("keyup", (e) => {
+        pressed.push(e.key);
+        pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length);
+        console.log("indication", indication);
+        indication.style.display = "block";
+
+        label.textContent = pressed.join("");
+
+        if (pressed.join("").includes(secretCode)) {
+          console.log("DING DING!");
+          cornify_add();
+          paragraph.style.display = "none";
+        }
+      });
+    </script>
+  </body>
+</html>
